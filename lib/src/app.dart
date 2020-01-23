@@ -3,7 +3,7 @@ import 'ui/movie_list.dart';
 
 class App extends StatefulWidget {
 
-  SearchApp({Key key, this.api}) : super(key: key);
+  App({Key key, this.api}) : super(key: key);
 
   @override
   _AppState createState() => _AppState();

@@ -1,13 +1,9 @@
 class LoginState {}
 
+class LoginInitial extends LoginState {}
+
 class LoginLoading extends LoginState {}
 
-class LoginError extends LoginState {}
+class LoginFailure extends LoginState {}
 
-class LoginNoTerm extends LoginState {}
-
-class WaitingChangeQRCode extends LoginState {}
-
-class WatingChangeTeam extends LoginState {}
-
-class WatingEmpty extends LoginState {}
+class LoginSuccess extends LoginState {}
