@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'ui/movie_list.dart';
+import 'ui/login_widget.dart';
+import 'ui/login_widget.dart';
 
 class App extends StatefulWidget {
-
-  App({Key key, this.api}) : super(key: key);
-
   @override
   _AppState createState() => _AppState();
 }
 
-class _AppState extends State<SearchApp> {
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'RxDart Github Search',
+      title: 'Zing wait table',
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.grey,
       ),
-      home: SearchScreen(api: widget.api),
+      home: LoginScreen(),
     );
   }
 }
