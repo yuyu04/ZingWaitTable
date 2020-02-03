@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zing_wait_table/src/ui/init_screen.dart';
 import 'ui/login_widget.dart';
 import 'ui/login_widget.dart';
 
@@ -16,7 +17,7 @@ class _AppState extends State<App> {
         brightness: Brightness.dark,
         primarySwatch: Colors.grey,
       ),
-      home: LoginScreen(),
+      home: InitScreen(),
     );
   }
 }

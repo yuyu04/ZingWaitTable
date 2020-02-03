@@ -3,31 +3,19 @@ import 'package:zing_wait_table/src/blocs/login_bloc.dart';
 import 'package:zing_wait_table/src/models/login_state.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  LoginScreenState createState() {
-    return LoginScreenState();
-  }
-}
+//class LoginWidget extends StatefulWidget {
+//  @override
+//  LoginWidgetState createState() {
+//    return LoginWidgetState();
+//  }
+//}
 
-class LoginScreenState extends State<LoginScreen> {
+class LoginWidget extends StatelessWidget {
   LoginBloc bloc;
 
   @override
-  void initState() {
-    super.initState();
-    bloc = LoginBloc();
-  }
-
-  @override
-  void dispose() {
-    bloc.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final LoginBloc bloc = Provider.of(context);
+    bloc = new LoginBloc();
 
     return Container(
       margin: EdgeInsets.all(20.0),
@@ -90,21 +78,5 @@ class LoginScreenState extends State<LoginScreen> {
         );
       },
     );
-  }
-
-  Widget _buildChild(SearchState state) {
-    if (state is SearchNoTerm) {
-      return SearchIntro();
-    } else if (state is SearchEmpty) {
-      return EmptyWidget();
-    } else if (state is SearchLoading) {
-      return LoadingWidget();
-    } else if (state is SearchError) {
-      return SearchErrorWidget();
-    } else if (state is SearchPopulated) {
-      return SearchResultWidget(items: state.result.items);
-    }
-
-    throw Exception('${state.runtimeType} is not supported');
   }
 }

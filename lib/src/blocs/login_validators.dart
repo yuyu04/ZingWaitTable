@@ -3,6 +3,7 @@ import 'dart:async';
 class Validators {
   final validateId = StreamTransformer<String, String>.fromHandlers(
       handleData: (Id, sink) {
+        sink.add(Id);
 //        if (Id.contains('@')) {
 //          sink.add(Id);
 //        } else {

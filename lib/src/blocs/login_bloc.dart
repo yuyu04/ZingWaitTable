@@ -7,16 +7,18 @@ import 'package:zing_wait_table/src/resource/web_sockets_notifications.dart';
 import '../models/login_state.dart';
 
 class LoginBloc with Validators {
+  static final LoginBloc _singleton = new LoginBloc._();
+
   final _id = BehaviorSubject<String>();
   final _password = BehaviorSubject<String>();
   BehaviorSubject<LoginState> subject;
 
   factory LoginBloc() {
-    final subject = BehaviorSubject<LoginState>.seeded(LoginInitial());
-    return LoginBloc._(subject);
+    return _singleton;
   }
 
-  LoginBloc._(this.subject) {
+  LoginBloc._() {
+    this.subject = BehaviorSubject<LoginState>.seeded(LoginInitial());
     sockets.initCommunication();
     sockets.addListener(_onMessageReceive);
   }
@@ -26,7 +28,7 @@ class LoginBloc with Validators {
 
   Function(String) get changeId => _id.sink.add;
   Function(String) get changePassword => _password.sink.add;
-  Stream<bool> get submitValid => Observable.combineLatest2(id, password, (email, password) {
+  Stream<bool> get submitValid => CombineLatestStream.combine2(id, password, (email, password) {
     return true;
   });
 
